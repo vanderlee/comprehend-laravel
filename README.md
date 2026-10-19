@@ -6,31 +6,17 @@ Illuminate 13 requires PHP 8.3). The core library has no Laravel dependency.
 
 ## Installation
 
-This package is maintained as a separate project and has not been published to
-Packagist. To try a local checkout, place it alongside your Laravel application:
-
-```text
-projects/
-    your-laravel-app/
-    Comprehend-Laravel/
-```
-
-Run these commands from your Laravel application's directory:
-
-```sh
-composer config repositories.comprehend-laravel path ../Comprehend-Laravel
-composer require "vanderlee/comprehend-laravel:@dev"
-```
-
-Adjust the path if your checkout is elsewhere. The `@dev` flag allows the
-unreleased package without changing your application's minimum stability.
-Composer installs the Comprehend core dependency automatically.
-
-Once the package is published to Packagist, installation will be:
+From your Laravel application's root directory, install the package with Composer:
 
 ```sh
 composer require vanderlee/comprehend-laravel
 ```
+
+Composer installs the Comprehend core dependency automatically. No service provider,
+facade, configuration file or package discovery is needed.
+
+The source is maintained in
+[vanderlee/comprehend-laravel](https://github.com/vanderlee/comprehend-laravel).
 
 ## Usage
 
@@ -54,7 +40,6 @@ This accepts references such as `INV-123` and rejects `INV-`, `123` and
 The constructor accepts a `Comprehend` facade or a `FrozenGrammar` object,
 not a class name. Inject your application's grammar service into the Form
 Request's `rules()` method when grammars are registered in Laravel's container.
-No service provider, facade, configuration file or package discovery is needed.
 
 The rule requires a complete match and rejects recovered syntax. Input must
 be a UTF-8 string; scalars and objects are never coerced. Syntax failures include
